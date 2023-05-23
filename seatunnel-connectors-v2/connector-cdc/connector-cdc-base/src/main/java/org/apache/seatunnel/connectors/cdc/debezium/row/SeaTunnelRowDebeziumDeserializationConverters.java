@@ -210,6 +210,8 @@ public class SeaTunnelRowDebeziumDeserializationConverters implements Serializab
                     return dbzObj;
                 } else if (dbzObj instanceof BigDecimal) {
                     return ((BigDecimal) dbzObj).byteValue();
+                } else if (dbzObj instanceof Boolean){
+                    return Boolean.TRUE.equals(dbzObj) ? 1 : 0;
                 } else {
                     return Byte.parseByte(dbzObj.toString());
                 }
